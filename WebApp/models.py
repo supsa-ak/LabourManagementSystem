@@ -17,7 +17,9 @@ class RegisterLabour(models.Model):
         return self.name
 
 class RequestLabour(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, blank=True, default='')
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    phone = models.IntegerField()
     quantity = models.IntegerField( default='')
     work_type = models.CharField(max_length=100)
     date = models.DateField()
@@ -27,12 +29,14 @@ class RequestLabour(models.Model):
 
 class RegisterComplaint(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, blank=True, default='')
-    Description = models.TextField()
+    description = models.TextField()
+
     def __str__(self):
         return self.name
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
     query  = models.TextField()
 
     def __str__(self):

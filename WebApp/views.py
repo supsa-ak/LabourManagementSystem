@@ -52,10 +52,32 @@ def logout_user(request):
     logout(request)
     return redirect('home')
 
+@login_required(login_url='login')
 def requestLabour(request):
+    if request.method=="POST":
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        phone = request.POST.get('phone', '')
+        quantity = request.POST.get('quantity', '')
+        work = request.POST.get('work', '')
+        date = request.POST.get('date', '')
+        requestlabour = RequestLabour(name=name, email=email, phone=phone, quantity=quantity, work_type=work, date=date)
+        requestlabour.save()
+        return redirect('req2')
     return render(request, 'requestlabour.html')
+
+def request2(request):
+    return render(request, 'request2.html')
+
+def contact(request):
+    if request.method=="POST":
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        query = request.POST.get('query', '')
+        contact = Contact(name=name, email=email, query=query)
+        contact.save()
+    return render(request, 'home.html')
 
 class RequestLabourCreateView(CreateView):
     model = RequestLabour
     form_class = RequestLabourForm
-

@@ -5,33 +5,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> -->
-    <title>{% block title %} {% endblock %}</title>
+  
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <title>{% block title %} {% endblock %}-Labour managment system</title>
     {% block css %} {% endblock %}
 </head>
 
 <body>
 
-    <a href="/" > <i class="fas fa-home"></i>Home</a>
-    <a href="{% url 'course' %}"><i class="fas fa-home"></i>Courses</a>
-
-    {% block profile_nav %}
-    {% if user.is_authenticated %}          
-      
-      <a href="{% url 'profile' %}">Hello, {{request.user.first_name}} </a>
-      <a class="main_btn" href="{% url 'logout' %}" ><i class="fas fa-sign-in-alt"></i>Logout</a>
-  
-      
-    {% else %}
-        <a class="main_btn" href="{% url 'login' %}" ><i class="fas fa-sign-in-alt"></i>Login</a>
-    {% endif %}
-    {% endblock %}
     
+
+
+
+    
+
+
     {% block body %} 
-    <h1>Homepage</h1>
     {% endblock %}
-    {% block footer %} {% endblock %}
-    <p id="msg"></p>
-    <script src="{% static 'js/script.js'%}"></script>
+
 </body>
 </html>

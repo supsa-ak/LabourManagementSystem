@@ -3,9 +3,13 @@ from .decorators import unauthenticated_user
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView
+from .models import * 
+from .forms import * 
 
+@unauthenticated_user
 def home(request):
-    return render(request, 'base.html')
+    return render(request, 'home.html')
 
 @login_required(login_url='login')
 def profile(request):
@@ -30,5 +34,6 @@ def logout_user(request):
     logout(request)
     return redirect('home')
 
-def course(request):
-    return render(request, 'course.html')
+class RequestLabourCreateView(CreateView):
+    model = RequestLabour
+    form_class = RequestLabourForm

@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+admin.site.register(RegisterLabour)
+admin.site.register(RequestLabour)
+admin.site.register(RegisterComplaint)
+admin.site.register(Contact)

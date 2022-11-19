@@ -7,7 +7,6 @@ labourtype = (('FL', 'Farm Labour'), ('TL', 'Transportation Labour'), ('SF', 'Sc
 class RegisterLabour(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, blank=True, default='')
     labourType = models.CharField(max_length=50, choices=labourtype)
-    internship_domain = models.CharField(max_length=50, default='')
     ok = models.CharField(max_length=50, default='')
 
     def __str__(self):

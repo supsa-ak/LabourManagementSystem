@@ -51,19 +51,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'LabourManagementSystem.wsgi.application'
 
 JAZZMIN_SETTINGS = {
-    "site_title": "Collegeranker Admin",
-    "site_header": "CollegeRanker Admin",
-    "site_brand": "CollegeRanker",
+    "site_title": "Representative Admin",
+    "site_header": "Representative Admin Panel",
+    "site_brand": "Labour Management System",
     "site_logo": "../static/siteapp/images/Logof_white.jpg",
     "site_logo_classes": "img-circle",
     "site_icon": '../static/siteapp/images/apple-touch-icon.png',
-    "welcome_sign": "Welcome to the Collegeranker Admin",
-    "copyright": "Collegeranker India",
+    "welcome_sign": "Welcome to the Labour Management System",
+    "copyright": "Labour Management System",
     "search_model": "auth.User",
     "user_avatar": None,
     "topmenu_links": [
         {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"name": "Collegeranker Website", "url": "https://collegeranker.in", "new_window": True},
         {"model": "auth.User"},
         {"app": "siteapp"},
     ],
@@ -129,6 +128,7 @@ else:
 
 STATIC_URL = '/static/'
 
+CRISPY_TEMPLATE_PACK='bootstrap4'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

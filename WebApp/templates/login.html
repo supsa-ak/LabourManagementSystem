@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login - Learning Portal CollegeRanker{% endblock %} 
+
+{% block body %} 
+
+
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="username" id="">
+  <input type="password" name="password" id="">
+
+  {% for message in messages %}
+  <div style="color: red;">
+    <p>{{message}}</p>
+  </div>
+  {% endfor %}
+
+  <button type="submit">Log In</button>
+
+</form>
+
+
+{% endblock %}

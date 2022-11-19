@@ -7,7 +7,6 @@ from django.views.generic.edit import CreateView
 from .models import * 
 from .forms import * 
 
-@unauthenticated_user
 def home(request):
     if request.user.is_authenticated :
         return redirect('user')
@@ -53,6 +52,10 @@ def logout_user(request):
     logout(request)
     return redirect('home')
 
+def requestLabour(request):
+    return render(request, 'requestlabour.html')
+
 class RequestLabourCreateView(CreateView):
     model = RequestLabour
     form_class = RequestLabourForm
+

@@ -1,17 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}User Action{% endblock %} 
+{% block title %}Request Labour{% endblock %} 
 {% block nav %} 
 <nav>
   <a href="/user" > <i class="fas fa-home"></i>Home</a>
   
   {% block profile_nav %}
   {% if user.is_authenticated %}          
-
   <a href="{% url 'profile' %}">Hello, {{request.user.first_name}} </a>
   <a class="main_btn" href="{% url 'logout' %}" ><i class="fas fa-sign-in-alt"></i>Logout</a>
-
-
   {% else %}
   <a class="main_btn" href="{% url 'login' %}" ><i class="fas fa-sign-in-alt"></i>Login</a>
   {% endif %}
@@ -20,8 +17,5 @@
 
 {% endblock %}
 {% block body %} 
-<h1>User page</h1>
-<a href="/admin/WebApp/registerlabour/add/">Register as Labour</a> 
-<br>
-<a href="/request-labour">Request Labour</a>
+<h1>Reqeust Labour page</h1>
 {% endblock %}

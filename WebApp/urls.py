@@ -9,4 +9,5 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),   
     path('user', views.user, name='user'),   
     path('signup', views.signup, name='signup'),
+    path('request-labour', views.requestLabour, name='request-labour'),
 ]

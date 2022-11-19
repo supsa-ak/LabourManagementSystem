@@ -9,7 +9,6 @@ from django.core.validators import RegexValidator
 class DateInput(forms.DateInput):
     input_type = 'date'
 
-
 class RequestLabourForm(ModelForm):
 
     class Meta:
@@ -25,6 +24,7 @@ class SignupForm(UserCreationForm):
     email = forms.EmailField()
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
     phone = forms.CharField(validators=[phone_regex], max_length=17)
+    
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'phone']

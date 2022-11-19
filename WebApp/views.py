@@ -7,13 +7,18 @@ from django.views.generic.edit import CreateView
 from .models import * 
 from .forms import * 
 
-@unauthenticated_user
 def home(request):
+    if request.user.is_authenticated :
+        return redirect('user')
     return render(request, 'home.html')
 
 @login_required(login_url='login')
 def profile(request):
     return render(request, 'profile.html')
+
+@login_required(login_url='login')
+def user(request):
+    return render(request, 'user.html')
 
 @unauthenticated_user
 def login_user(request):
@@ -25,7 +30,7 @@ def login_user(request):
 
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('user')
             else:
                 messages.info(request, 'Username OR password is incorrect')
     return render(request, 'login.html')

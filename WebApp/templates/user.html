@@ -3,7 +3,7 @@
 {% block title %}Login - Learning Portal CollegeRanker{% endblock %} 
 {% block nav %} 
 <nav>
-  <a href="/" > <i class="fas fa-home"></i>Home</a>
+  <a href="/user" > <i class="fas fa-home"></i>Home</a>
   
   {% block profile_nav %}
   {% if user.is_authenticated %}          
@@ -20,5 +20,5 @@
 
 {% endblock %}
 {% block body %} 
-<h1>Profile page</h1>
+<h1>User page</h1>
 {% endblock %}

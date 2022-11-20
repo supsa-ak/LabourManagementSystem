@@ -1,24 +1,86 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Profile{% endblock %} 
-{% block nav %} 
-<nav>
-  <a href="/user" > <i class="fas fa-home"></i>Home</a>
-  
-  {% block profile_nav %}
-  {% if user.is_authenticated %}          
+{% block title %}Profile{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+<style>
+  body {
+    text-align: center;
+    padding: 40px 0;
+    background: #EBF0F5;
+  }
 
-  <a href="{% url 'profile' %}">Hello, {{request.user.first_name}} </a>
-  <a class="main_btn" href="{% url 'logout' %}" ><i class="fas fa-sign-in-alt"></i>Logout</a>
+  h1 {
+    color: #88B04B;
+    font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
 
+  p {
+    color: #404F5E;
+    font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+    font-size: 20px;
+    margin: 0;
+  }
 
-  {% else %}
-  <a class="main_btn" href="{% url 'login' %}" ><i class="fas fa-sign-in-alt"></i>Login</a>
-  {% endif %}
-  {% endblock %}
-</nav>
+  i {
+    color: #9ABC66;
+    font-size: 100px;
+    line-height: 200px;
+    margin-left: -15px;
+  }
 
+  .card {
+    background: white;
+    padding: 60px;
+    border-radius: 4px;
+    box-shadow: 0 2px 3px #C8D0D8;
+    display: inline-block;
+    margin: 0 auto;
+  }
+</style>
 {% endblock %}
-{% block body %} 
-Payment Done
+
+{% block nav %}
+<nav class="navbar navbar-default navbar-me">
+  <div class="container-fluid ">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed menu-collapsed-button" data-toggle="collapse"
+        data-target="#navbar-primary-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand site-logo" href="/"><img style="width: 80%; position: relative; bottom: 45px;"
+          src="{% static 'img/logo.jpg' %}" alt="logo" srcset=""></a>
+    </div>
+    <div class="collapse navbar-collapse navbar-right  header-right-menu" id="navbar-primary-collapse">
+      <ul class="nav navbar-nav ">
+        <li><a href="/user"> Home</a></li>
+
+        {% if user.is_authenticated %}
+
+        <li><a href="{% url 'profile' %}">Hello, {{request.user.first_name}} </a></li>
+        <li><a href="{% url 'logout' %}">Logout </a></li>
+        {% else %}
+        <li><a class="main_btn" href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+{% block body %}
+
+<div class="card">
+  <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+    <i class="checkmark">✓</i>
+  </div>
+  <h1>Success</h1>
+  <p>We received your purchase request;<br /> we'll be in touch shortly!</p>
+</div>
 {% endblock %}

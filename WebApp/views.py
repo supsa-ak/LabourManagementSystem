@@ -14,7 +14,8 @@ def home(request):
 
 @login_required(login_url='login')
 def profile(request):
-    return render(request, 'profile.html')
+    info = {'first_name': request.user.first_name, 'last_name': request.user.last_name, 'email':  request.user.email}
+    return render(request, 'profile.html', info)
 
 @login_required(login_url='login')
 def user(request):

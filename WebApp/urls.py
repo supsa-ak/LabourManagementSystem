@@ -12,4 +12,6 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
     path('request-labour', views.requestLabour, name='request-labour'),
     path('request2', views.request2, name='req2'),
+    path('payment', views.payment, name='payment'),
+    path('done', views.done, name='done'),
 ]

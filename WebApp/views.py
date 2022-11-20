@@ -55,19 +55,35 @@ def logout_user(request):
 @login_required(login_url='login')
 def requestLabour(request):
     if request.method=="POST":
+        user = request.user
         name = request.POST.get('name', '')
         email = request.POST.get('email', '')
         phone = request.POST.get('phone', '')
         quantity = request.POST.get('quantity', '')
         work = request.POST.get('work', '')
         date = request.POST.get('date', '')
-        requestlabour = RequestLabour(name=name, email=email, phone=phone, quantity=quantity, work_type=work, date=date)
+        confirm_Request = request.POST.get('', '')
+        called_farmers = request.POST.get('', '')
+        requestlabour = RequestLabour(user=user, name=name, email=email, phone=phone, quantity=quantity, work_type=work, date=date)
         requestlabour.save()
         return redirect('req2')
     return render(request, 'requestlabour.html')
 
+@login_required(login_url='login')
 def request2(request):
-    return render(request, 'request2.html')
+    if request.method=="GET":
+        inf = RequestLabour.objects.filter(user=request.user)
+        info = {'info': inf}
+
+    return render(request, 'request2.html', info)
+
+@login_required(login_url='login')
+def payment(request):
+    return render(request, 'payment.html')
+
+@login_required(login_url='login')
+def done(request):
+    return render(request, 'done.html')
 
 def contact(request):
     if request.method=="POST":

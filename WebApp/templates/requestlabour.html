@@ -26,6 +26,7 @@
 {% endblock %}
 
 {% block body %}
+<a href="/request2">Previous Requests</a>
 <form action="/request-labour" method="post">
   {% csrf_token %}
   <div class="input-group">

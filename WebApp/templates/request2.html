@@ -16,21 +16,37 @@
 {% endblock %}
 
 {% block body %}
-<h1>Request 2</h1>
-<form method="post" action="/request-labour/">
-    {% csrf_token %}
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="name">Name</span>
-      <input required type="text" class="form-control">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="input-group-prepend">
-      <label for="exampleInputEmail1">Email address</label>
-      <input required type="email" class="input-group-text" id="" placeholder="Enter email">
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<a href="/request-labour">Request Labour</a>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Work Type</th>
+      <th scope="col">Date</th>
+      <th scope="col">confirm_Request</th>
+      <th scope="col">called_farmers</th>
+      <th scope="col">Pay</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in info %}
+    <tr>
+      <td>{{i.name}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.phone}}</td>
+      <td>{{i.quantity}}</td>
+      <td>{{i.work_type}}</td>
+      <td>{{i.date}}</td>
+      <td>{{i.confirm_Request}}</td>
+      <td>{{i.called_farmers}}</td>
+      <td><a href="/payment">Pay</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 {% endblock %}
